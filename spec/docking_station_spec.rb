@@ -35,6 +35,13 @@ describe DockingStation do
     it 'raises an error when there are no bikes available' do
       expect { docking_station.release_bike}.to raise_error "No bikes available"
     end
+
+    it 'raises an error when bike is broken' do
+      bike = Bike.new
+      bike.report_broken
+      docking_station.dock(bike)
+      expect { docking_station.release_bike}.to raise_error "No working bikes"
+    end
   end
 
   describe 'initialization' do

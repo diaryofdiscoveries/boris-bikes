@@ -12,6 +12,7 @@ DEFAULT_CAPACITY = 20
 
   def release_bike
     fail 'No bikes available' if empty?
+    fail 'No working bikes' if (bikes[0].broken?)
     bikes.pop
   end
 
