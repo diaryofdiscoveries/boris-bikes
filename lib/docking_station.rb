@@ -10,13 +10,23 @@ attr_reader :capacity
   end
 
   def release_bike
-    fail 'No bikes available' if @bikes.empty?
-    @bikes.pop
+    fail 'No bikes available' if empty?
+    bikes.pop
   end
 
   def dock(bike)
-    fail 'Dock is full. Can\'t accept bike.' if (@bikes.length >= @capacity)
-    @bikes << bike
+    fail 'Dock is full. Can\'t accept bike.' if full?
+    bikes << bike
   end
+
+private
+  def full?
+    bikes.length >= capacity
+  end
+
+  def empty?
+    bikes.empty?
+  end
+
 
 end
