@@ -17,7 +17,9 @@ describe DockingStation do
   end
 
   it "doesn't accept more bikes than capacity" do
-    docking_station.capacity.times {docking_station.dock Bike.new}
+    DockingStation::DEFAULT_CAPACITY.times do
+      docking_station.dock Bike.new
+    end
     expect {docking_station.dock Bike.new}.to raise_error 'Dock is full. Can\'t accept bike.'
   end
 
